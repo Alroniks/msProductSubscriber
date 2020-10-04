@@ -1,0 +1,9 @@
+.idea
+.D_Store
+.encryption
+
+dist/*/
+dist/*.zip
+!dist/.gitkeep
+
+vendor

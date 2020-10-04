@@ -1,0 +1,42 @@
+{
+  "name": "alroniks/msproductsubscriber",
+  "description": "",
+  "type": "modx-extra-package",
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Marat",
+      "email": ""
+    },
+    {
+      "name": "Ivan Klimchuk",
+      "email": "ivan@klimchuk"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "mspsub\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "alroniks/yamb": "dev-master"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
+  },
+  "extra": {
+    "package": {
+      "name": "msProductSubscriber",
+      "files": [
+
+      ],
+      "resolvers": [
+
+      ],
+      "validators": [],
+      "setup-options": null
+    }
+  }
+}
