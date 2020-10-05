@@ -1,74 +1,54 @@
 <?php
 
-class msInformUserMgrSettingsManagerController extends modExtraManagerController
+declare(strict_types=1);
+
+class msProdSubMgrSettingsManagerController extends modExtraManagerController
 {
-    /** @var msInformUser $msInformUser */
-    public $msInformUser;
+    public $service;
 
-    public function initialize()
+    public function initialize(): void
     {
-        $this->msInformUser = $this->modx->getService(
+        $this->service = $this->modx->getService(
             'msInformUser',
             'msInformUser',
-            MODX_CORE_PATH . 'components/msinformuser/model/'
+            MODX_CORE_PATH . 'components/msprodsub/model/'
         );
-        parent::initialize();
     }
 
-    /**
-     * @return array
-     */
-    public function getLanguageTopics()
+    public function getLanguageTopics(): array
     {
-        return ['msinformuser:default'];
+        return ['msprodsub:default'];
     }
 
-
-    /**
-     * @return bool
-     */
-    public function checkPermissions()
+    public function getPageTitle(): string
     {
-        return true;
+        return $this->modx->lexicon('msprodsub_settings');
     }
 
-    /**
-     * @return null|string
-     */
-    public function getPageTitle()
+    public function loadCustomCssJs(): void
     {
-        return $this->modx->lexicon('msinformuser_settings');
-    }
+        $this->addCss($this->service->config['cssUrl'] . 'mgr/main.css');
 
-    /**
-     * @return void
-     */
-    public function loadCustomCssJs()
-    {
-        $this->addCss($this->msInformUser->config['cssUrl'] . 'mgr/main.css');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/msinformuser.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/misc/utils.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/misc/combo.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/settings/mailing.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/settings/mailinggroup.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/settings/settings.panel.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/sections/settings/settings.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/msinformuser.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/misc/utils.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/misc/combo.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/widgets/settings/mailing.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/widgets/settings/mailinggroup.js');
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/widgets/settings/settings.panel.js');
+
+        $this->addJavascript($this->service->config['jsUrl'] . 'mgr/pages/settings.js');
 
         $this->addHtml('<script type="text/javascript">
-        msInformUser.config = ' . json_encode($this->msInformUser->config) . ';
+        msInformUser.config = ' . json_encode($this->msInformUser->config, JSON_THROW_ON_ERROR) . ';
         msInformUser.config.connector_url = "' . $this->msInformUser->config['connectorUrl'] . '";
         Ext.onReady(function() {MODx.load({ xtype: "msinformuser-page-settings"});});
         </script>');
     }
 
-
-    /**
-     * @return string
-     */
-    public function getTemplateFile()
+    public function getTemplateFile(): string
     {
-        $this->content .= '<div id="msinformuser-panel-settings-div"></div>';
+        $this->content .= '<div id="msprodsub-panel-settings"></div>';
 
-        return '';
+        return parent::getTemplateFile();
     }
 }

@@ -3,9 +3,8 @@
 class msInformUserSentRemoveProcessor extends modObjectProcessor
 {
     public $classKey = 'msInformUserArrival';
-    public $languageTopics = ['msinformuser'];
-    //public $permission = 'remove';
 
+    public $languageTopics = ['msinformuser'];
 
     /**
      * @return array|string

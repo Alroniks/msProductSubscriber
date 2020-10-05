@@ -19,7 +19,7 @@ $modx->setLogLevel(modX::LOG_LEVEL_ERROR);
 $modx->setLogTarget('FILE');
 $modx->error->message = null;
 
-if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
+if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
     $modx->sendRedirect($modx->makeUrl($modx->getOption('site_start'),'','','full'));
 }
 

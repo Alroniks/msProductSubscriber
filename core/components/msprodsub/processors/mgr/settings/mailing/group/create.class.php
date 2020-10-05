@@ -5,7 +5,6 @@ class msInformUserMailingGroupCreateProcessor extends modObjectCreateProcessor
 //    public $objectType = 'msInformUserItem';
     public $classKey = 'msInformUserMailingGroup';
     public $languageTopics = ['msinformuser'];
-    //public $permission = 'create';
 
 
     /**

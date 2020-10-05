@@ -1,66 +1,42 @@
 <?php
 
 /**
- * The home manager controller for msInformUser.
- *
+ * The home manager controller for msProdSub.
  */
-class msInformUserMgrMsInformUserManagerController extends modExtraManagerController
+class msProdSubMgrHomeManagerController extends modExtraManagerController
 {
-    /** @var msInformUser $msInformUser */
     public $msInformUser;
 
-
-    /**
-     *
-     */
     public function initialize()
     {
         $this->msInformUser = $this->modx->getService('msInformUser', 'msInformUser', MODX_CORE_PATH . 'components/msinformuser/model/');
+
         parent::initialize();
     }
 
-
-    /**
-     * @return array
-     */
-    public function getLanguageTopics()
+    public function getLanguageTopics(): array
     {
-        return ['msinformuser:default'];
+        return ['msprodsub:default'];
     }
 
-
-    /**
-     * @return bool
-     */
-    public function checkPermissions()
+    public function getPageTitle(): string
     {
-        return true;
+        return $this->modx->lexicon('msprodsub');
     }
 
-
-    /**
-     * @return null|string
-     */
-    public function getPageTitle()
-    {
-        return $this->modx->lexicon('msinformuser');
-    }
-
-
-    /**
-     * @return void
-     */
-    public function loadCustomCssJs()
+    public function loadCustomCssJs(): void
     {
         $this->addCss($this->msInformUser->config['cssUrl'] . 'mgr/main.css');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/msinformuser.js');
+
+        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/msprodsub.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/misc/utils.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/misc/combo.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/administration/receipt.grid.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/administration/sent.grid.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/administration/delayedmailing.grid.js');
         $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/widgets/administration/admin.panel.js');
-        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/sections/administration/admin.js');
+
+        $this->addJavascript($this->msInformUser->config['jsUrl'] . 'mgr/pages/home.js');
 
         $this->addHtml('<script type="text/javascript">
         msInformUser.config = ' . json_encode($this->msInformUser->config) . ';
@@ -69,14 +45,10 @@ class msInformUserMgrMsInformUserManagerController extends modExtraManagerContro
         </script>');
     }
 
-
-    /**
-     * @return string
-     */
-    public function getTemplateFile()
+    public function getTemplateFile(): string
     {
-        $this->content .= '<div id="msinformuser-panel-admin-div"></div>';
+        $this->content .= '<div id="msprodsub-panel-home"></div>';
 
-        return '';
+        return parent::getTemplateFile();
     }
 }

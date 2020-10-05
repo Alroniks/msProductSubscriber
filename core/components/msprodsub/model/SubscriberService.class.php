@@ -1,15 +1,16 @@
 <?php
 
-class msInformUser
+class SubscriberService
 {
-    public $version = '1.2';
-
     /** @var modX $modx */
     public $modx;
+
     /** @var pdoTools $pdoTools */
     public $pdoTools;
+
     /** @var msIuCountHandler $stockOut */
     public $stockOut;
+
     /** @var msIuControlHandler $controlOut  */
     public $controlOut;
 
@@ -17,27 +18,34 @@ class msInformUser
      * Данные из сессии
      * @var array $scriptProperties */
     public $scriptProperties = [];
+
     /**
      * Пользователь авторизован
      * @var bool $userAuth */
     public $userAuth = false;
+
     /**
      * Данные пользователя. На тот случай, если указанный email в форме отличается
      * от email в профиле. Содержит в себе: email
      * @var array $userInform */
     public $userInform = [];
+
     /**
      * Показывать поле запроса кол-ва в модальном окне
      * @var bool $requestCount */
     public $requestCount;
+
     /**
      * Использовать cron
      * @var bool $useCron */
     public $useCron;
+
     /** @var string $classArrival */
     public $classArrival = 'msInformUserArrival';
+
     /** @var string $tpl */
     protected $tpl;
+
     /** @var string $context */
     protected $context;
 
@@ -46,7 +54,7 @@ class msInformUser
      * @param modX $modx
      * @param array $config
      */
-    function __construct(modX &$modx, array $config = [])
+    function __construct(modX $modx, array $config = [])
     {
         $this->modx =& $modx;
         $corePath = MODX_CORE_PATH . 'components/msinformuser/';
@@ -75,14 +83,12 @@ class msInformUser
         }
     }
 
-    /**
-     *
-     */
     public function initialize()
     {
         $this->_initMap();
+
         // examples msInformUser to extras.marabar.ru
-        if ($_SERVER['SERVER_NAME'] == 'extras.marabar.ru' && isset($_SESSION['extrasMarabar']['msIUrequestCount'])) {
+        if ($_SERVER['SERVER_NAME'] === 'extras.marabar.ru' && isset($_SESSION['extrasMarabar']['msIUrequestCount'])) {
             $this->requestCount = $_SESSION['extrasMarabar']['msIUrequestCount'];
         } else {
             $this->requestCount = $this->modx->getOption('msinformuser_request_count', null, false, true);
