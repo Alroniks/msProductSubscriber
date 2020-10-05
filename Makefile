@@ -7,7 +7,7 @@ release:
 	php _build/build.transport.php release
 
 install:
-	docker-compose -f ../../../docker-compose.yml exec mdx php /var/www/html/public/pkg/msproductsubscriber/_build/install.script.php
+	docker-compose -f ../../../docker-compose.yml exec mdx php /var/www/html/public/pkg/msprodsub/_build/install.script.php
 
 proceed:
 	$(MAKE) build && $(MAKE) install

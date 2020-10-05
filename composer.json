@@ -1,5 +1,5 @@
 {
-  "name": "alroniks/msproductsubscriber",
+  "name": "alroniks/msprodsub",
   "description": "",
   "type": "modx-extra-package",
   "license": "GPL-2.0-only",
@@ -16,7 +16,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "mspsub\\": "src"
+      "msprodsub\\": "src"
     }
   },
   "require": {
@@ -28,7 +28,7 @@
   },
   "extra": {
     "package": {
-      "name": "msProductSubscriber",
+      "name": "ProductSubscriber",
       "files": [
 
       ],
