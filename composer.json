@@ -36,7 +36,19 @@
 
       ],
       "validators": [],
-      "setup-options": null
+      "setup-options": null,
+      "objects": {
+        "system_settings": [
+          {
+            "key": "msinformuser_request_count",
+            "value": false,
+            "xtype" : "combo-boolean",
+            "namespace": "msinformuser",
+            "area": "msinformuser",
+            "editedon": null
+          }
+        ]
+      }
     }
   }
 }
