@@ -1,0 +1,12 @@
+{
+  "text": "msinformuser",
+  "parent": "components",
+  "action": "mgr\\/msinformuser",
+  "description": "msinformuser_menu_desc",
+  "icon": "",
+  "menuindex": 0,
+  "params": "",
+  "handler": "",
+  "permissions": "",
+  "namespace": "msinformuser"
+}
