@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model package="msinformuser" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="msinformuser"
-       version="1.1">
+<model package="msprodsub" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="msprodsub" version="1.1">
 
-    <object class="msInformUserMailingGroup" table="msinformuser_mailing_group" extends="xPDOSimpleObject">
+    <object class="psMailingGroup" table="msprodsub_mailing_groups" extends="xPDOSimpleObject">
+
         <field key="name" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
         <field key="description" dbtype="text" phptype="string" null="true" default="" />
         <field key="class" dbtype="varchar" precision="191" phptype="string" null="false" default="modResource" />
@@ -10,14 +10,17 @@
         <index alias="name" name="name" primary="false" unique="true" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
         </index>
+
         <index alias="class" name="class" primary="false" unique="false" type="BTREE">
             <column key="class" length="" collation="A" null="false"/>
         </index>
 
-        <composite alias="Mailing" class="msInformUserMailing" local="name" foreign="group" owner="local" cardinality="many" />
+        <composite alias="psMailing" class="psMailing" local="name" foreign="group" owner="local" cardinality="many" />
+
     </object>
 
-    <object class="msInformUserMailing" table="msinformuser_mailing" extends="xPDOSimpleObject">
+    <object class="psMailing" table="msprodsub_mailings" extends="xPDOSimpleObject">
+
         <field key="name" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
         <field key="description" dbtype="text" phptype="string" null="true" default="" />
         <field key="subject" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
@@ -38,19 +41,23 @@
         <index alias="name" name="name" primary="false" unique="true" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
         </index>
+
         <index alias="group" name="group" primary="false" unique="false" type="BTREE">
             <column key="group" length="" collation="A" null="false"/>
         </index>
+
         <index alias="active" name="active" primary="false" unique="false" type="BTREE">
             <column key="active" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="MailingGroup" class="msInformUserMailingGroup" local="group" foreign="name" cardinality="one" owner="foreign" />
+        <aggregate alias="MailingGroup" class="psMailingGroup" local="group" foreign="name" cardinality="one" owner="foreign" />
 
-        <composite alias="Arrival" class="msInformUserArrival" local="id" foreign="mailing_index" owner="local" cardinality="many" />
+        <composite alias="Arrival" class="psArrival" local="id" foreign="mailing_index" owner="local" cardinality="many" />
+
     </object>
 
-    <object class="msInformUserArrival" table="msinformuser_arrival" extends="xPDOSimpleObject">
+    <object class="psArrival" table="msprodsub_arrivals" extends="xPDOSimpleObject">
+
         <field key="res_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="" />
         <field key="mailing_index" dbtype="int" precision="2" attributes="unsigned" phptype="integer" null="false" default="2"/>
         <field key="title" dbtype="varchar" precision="191" phptype="string" null="false" default=""/>
@@ -69,29 +76,36 @@
         <index alias="res_id" name="res_id" primary="false" unique="false" type="BTREE">
             <column key="res_id" length="" collation="A" null="false"/>
         </index>
+
         <index alias="mailing_index" name="mailing_index" primary="false" unique="false" type="BTREE">
             <column key="mailing_index" length="" collation="A" null="false"/>
         </index>
+
         <index alias="title" name="title" primary="false" unique="false" type="BTREE">
             <column key="title" length="" collation="A" null="false"/>
         </index>
+
         <index alias="email" name="email" primary="false" unique="false" type="BTREE">
             <column key="email" length="" collation="A" null="false"/>
         </index>
+
         <index alias="user_id" name="user_id" primary="false" unique="false" type="BTREE">
             <column key="user_id" length="" collation="A" null="true"/>
         </index>
+
         <index alias="status" name="status" primary="false" unique="false" type="BTREE">
             <column key="status" length="" collation="A" null="false"/>
         </index>
+
         <index alias="hash" name="hash" primary="false" unique="true" type="BTREE">
             <column key="hash" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Mailing" class="msInformUserMailing" local="mailing_index" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Mailing" class="psMailing" local="mailing_index" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="Resource" class="modResource" local="id" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="UserProfile" class="modUserProfile" local="user_id" foreign="internalKey" cardinality="one" owner="foreign" />
+
     </object>
 
 </model>

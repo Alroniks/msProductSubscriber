@@ -3,6 +3,7 @@
 class msInformUser
 {
     public $version = '1.2';
+
     /** @var modX $modx */
     public $modx;
     /** @var pdoTools $pdoTools */

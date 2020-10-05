@@ -27,7 +27,7 @@ $chunks = [
 //unset($_SESSION['msInformUser']);
 
 $hash = spl_object_hash($modx);
-if ($_SESSION['msInformUser']['tmp'] != $hash) {
+if ($_SESSION['msInformUser']['tmp'] !== $hash) {
     $_SESSION['msInformUser']['tmp'] = $hash;
     $_SESSION['msInformUser']['chunks'] = $chunks;
     $modx->regClientHTMLBlock('<script>msInformUserConfig =

@@ -1,24 +1,19 @@
 <?php
 
-/**
- * The home manager controller for msInformUser.
- *
- */
 class msInformUserMgrSettingsManagerController extends modExtraManagerController
 {
     /** @var msInformUser $msInformUser */
     public $msInformUser;
 
-
-    /**
-     *
-     */
     public function initialize()
     {
-        $this->msInformUser = $this->modx->getService('msInformUser', 'msInformUser', MODX_CORE_PATH . 'components/msinformuser/model/');
+        $this->msInformUser = $this->modx->getService(
+            'msInformUser',
+            'msInformUser',
+            MODX_CORE_PATH . 'components/msinformuser/model/'
+        );
         parent::initialize();
     }
-
 
     /**
      * @return array
@@ -37,7 +32,6 @@ class msInformUserMgrSettingsManagerController extends modExtraManagerController
         return true;
     }
 
-
     /**
      * @return null|string
      */
@@ -45,7 +39,6 @@ class msInformUserMgrSettingsManagerController extends modExtraManagerController
     {
         return $this->modx->lexicon('msinformuser_settings');
     }
-
 
     /**
      * @return void
