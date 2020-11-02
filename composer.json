@@ -1,0 +1,54 @@
+{
+  "name": "alroniks/msprodsub",
+  "description": "",
+  "type": "modx-extra-package",
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Marat Marabar",
+      "email": "marat@marabar.ru"
+    },
+    {
+      "name": "Ivan Klimchuk",
+      "email": "ivan@klimchuk"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "msprodsub\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "alroniks/yamb": "dev-master"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
+  },
+  "extra": {
+    "package": {
+      "name": "ProductSubscriber",
+      "files": [
+
+      ],
+      "resolvers": [
+
+      ],
+      "validators": [],
+      "setup-options": null,
+      "objects": {
+        "system_settings": [
+          {
+            "key": "msinformuser_request_count",
+            "value": false,
+            "xtype" : "combo-boolean",
+            "namespace": "msinformuser",
+            "area": "msinformuser",
+            "editedon": null
+          }
+        ]
+      }
+    }
+  }
+}

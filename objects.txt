@@ -1,0 +1,60 @@
+// modMenu
+
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => true,
+  'namespace' => 'msinformuser',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '997919c20724060c8687577c42651090',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '68a7d1062cef1a050c644548ddf3f8dd',
+  'native_key' => 'msinformuser',
+  'object' => '{"text":"msinformuser","parent":"components","action":"mgr\\/msinformuser","description":"msinformuser_menu_desc","icon":"","menuindex":0,"params":"","handler":"","permissions":"","namespace":"msinformuser"}',
+);
+
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => true,
+  'namespace' => 'msinformuser',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'db64c2c97a705f23c0182cc680e8a5b8',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '92e32c7bfcb9927d2e2c166d9becc681',
+  'native_key' => 'msinformuser_settings',
+  'object' => '{"text":"msinformuser_settings","parent":"msinformuser","action":"mgr\\/settings","description":"msinformuser_menu_settings_desc","icon":"","menuindex":0,"params":"","handler":"","permissions":"","namespace":"msinformuser"}',
+);
+
+// modNamespace
+
+<?php return array (
+  'unique_key' => 'name',
+  'preserve_keys' => true,
+  'update_object' => true,
+  'resolve_files' => true,
+  'resolve_php' => true,
+  'namespace' => 'msinformuser',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '5834d77ee22432120001bc2d4881206a',
+  'package' => 'modx',
+  'class' => 'modNamespace',
+  'signature' => 'a3912c4e8e4c95defad9d0f734945b70',
+  'native_key' => 'msinformuser',
+  'object' => '{"name":"msinformuser","path":"{core_path}components\\/msinformuser\\/","assets_path":""}',
+);
+
+
